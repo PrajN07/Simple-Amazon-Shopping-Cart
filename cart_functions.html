@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cart Quantity</title>
+  </head>
+  <body>
+    <p>Cart Quantity</p>
+    
+    <button
+      class="qty"
+      onclick="console.log(`Cart quantity: ${cartqty}`);
+      UpdateCartScreen();
+
+    "
+    >
+      Show Quantity
+    </button>
+
+    <button
+      class="add"
+      onclick="
+    updateCartQty(1);
+    "
+    >
+      Add to Cart
+    </button>
+
+    <button
+      onclick="
+       updateCartQty(2);
+  
+    "
+    >
+      +2
+    </button>
+
+    <button
+      onclick="
+       updateCartQty(3);
+    "
+    >
+      +3
+    </button>
+
+    <button
+      onclick="
+     updateCartQty(-2);
+    "
+    >
+      -2
+    </button>
+
+    <button
+      onclick="
+     updateCartQty(-3);
+    "
+    >
+      -3
+    </button>
+
+    <button
+      onclick="
+    cartqty= 0;
+    console.log('Cart was Reset');
+    console.log(`Cart quantity: ${cartqty}`);
+    UpdateCartScreen();
+    "
+    >
+      Reset Cart
+    </button>
+
+    <p class="js-display"></p>
+    <script>
+      let cartqty = 0;
+      UpdateCartScreen();
+      function updateCartQty(value) {
+        
+        if (cartqty + value > 10) {
+          alert("The cart is full");
+          return;
+        }
+
+        if (cartqty + value < 0) {
+          alert("Not enough items");
+          return;
+        }
+
+        cartqty += value;
+        console.log(`Cart quantity: ${cartqty}`);
+        UpdateCartScreen();
+      }
+
+      function UpdateCartScreen(){
+        const option = document.querySelector('.js-display');
+        option.innerHTML = `Cart quantity: ${cartqty}`;
+        
+
+      }
+    </script>
+  </body>
+</html>
